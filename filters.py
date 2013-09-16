@@ -32,7 +32,10 @@ dst1Diff = dst1.copy()
 for i in range(256):
     for j in range(256):
         for k in range(3):
-            dst1Diff[i, j, k] = abs(dst1Diff[i, j, k] - src[i, j, k]) 
+            if(dst1Diff[i, j, k] < src[i, j, k]):
+                dst1Diff[i, j, k] = src[i, j, k] - dst1Diff[i, j, k]
+            else:
+                dst1Diff[i, j, k] = dst1Diff[i, j, k] - src[i, j, k]
 dst1Diff = cv2.cvtColor(dst1Diff, cv2.COLOR_YCR_CB2RGB)
 cv2.imshow("Gaussian difference", dst1Diff)
 
@@ -46,7 +49,10 @@ dst2Diff = dst2.copy()
 for i in range(256):
     for j in range(256):
         for k in range(3):
-            dst2Diff[i, j, k] = abs(dst2Diff[i, j, k] - src[i, j, k])
+            if(dst2Diff[i, j, k] < src[i, j, k]):
+                dst2Diff[i, j, k] = src[i, j, k] - dst2Diff[i, j, k]
+            else:
+                dst2Diff[i, j, k] = dst2Diff[i, j, k] - src[i, j, k]
 dst2Diff = cv2.cvtColor(dst2Diff, cv2.COLOR_YCR_CB2RGB) 
 cv2.imshow("Bilateral difference", dst2Diff)
 
@@ -60,7 +66,10 @@ dst3Diff = dst3.copy()
 for i in range(256):
     for j in range(256):
         for k in range(3):
-            dst3Diff[i, j, k] = abs(dst3Diff[i, j, k] - src[i, j, k]) 
+            if(dst3Diff[i, j, k] < src[i, j, k]):
+                dst3Diff[i, j, k] = src[i, j, k] - dst3Diff[i, j, k]
+            else:
+                dst3Diff[i, j, k] = dst3Diff[i, j, k] - src[i, j, k]
 dst3Diff = cv2.cvtColor(dst3Diff, cv2.COLOR_YCR_CB2RGB)
 cv2.imshow("NLM difference", dst3Diff)
 

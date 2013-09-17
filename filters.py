@@ -18,7 +18,11 @@ src = cv2.cvtColor(image, cv2.COLOR_RGB2YCR_CB)
 #adding noise
 for i in range(256):
     for j in range(256):
-        src[i, j, 0] += random.gauss(0, 5)
+        noise = random.gauss(0, 5)
+    	if (src[i, j, 0] + noise <= 255):
+    	    src[i, j, 0] += noise
+    	else:
+    	    src[i, j, 0] -= noise
 srcRGB = cv2.cvtColor(src, cv2.COLOR_YCR_CB2RGB)
 cv2.imshow("with noise", srcRGB)
 

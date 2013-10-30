@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 
 #loading image
-image = cv2.imread('wiener-problem')
+image = cv2.imread('wiener-problem.bmp')
 cv2.imshow("Original", image)
 image = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
 

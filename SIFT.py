@@ -33,7 +33,7 @@ print 'distance: max: %.3f' % max(dist)
 
 # Threshold test
 # You can change threshold number here
-thresholdKeypoints = [i[0] for i in matches if i[0].distance < 2]
+thresholdKeypoints = [i[0] for i in matches if i[0].distance < 45]
 
 # Ratio test
 ratioKeypoints = []

@@ -33,7 +33,7 @@ print 'distance: max: %.3f' % max(dist)
 
 # Threshold test
 # You can change threshold number here
-thresholdKeypoints = [i[0] for i in matches if i[0].distance < 45]
+thresholdKeypoints = [i[0] for i in matches if i[0].distance < 2]
 
 # Ratio test
 ratioKeypoints = []
@@ -81,8 +81,15 @@ for m in ratioKeypoints:
 cv2.imshow('Threshold matches', destination1)
 cv2.imshow('Ratio matches', destination2)
 
-print 'Threshold correct matches: %.3f' % ((len(thresholdKeypoints) - thresholdCounter) / (len(thresholdKeypoints) / 100.0)), '%'
-print 'Ratio correct matches: %.3f' % ((len(ratioKeypoints) - ratioCounter) / (len(ratioKeypoints) / 100.0)), '%'
+if len(thresholdKeypoints) == 0:
+    print 'Threshold correct matches: 0 %'
+else:
+    print 'Threshold correct matches: %.3f' % ((len(thresholdKeypoints) - thresholdCounter) / (len(thresholdKeypoints) / 100.0)), '%'
+
+if len(ratioKeypoints) == 0:
+    print 'Ratio correct matches: 0 %'
+else:
+    print 'Ratio correct matches: %.3f' % ((len(ratioKeypoints) - ratioCounter) / (len(ratioKeypoints) / 100.0)), '%'
 
 #waiting ESC key
 while True:
